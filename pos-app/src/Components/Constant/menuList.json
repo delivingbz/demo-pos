@@ -1,0 +1,87 @@
+{
+  "menuBreakfast": [
+    {
+      "id": 1,
+      "name": [
+        "Latte",
+        "Cappuccino",
+        "Espresso",
+        "Flat White",
+        "Tea",
+        "Hot Chocolate",
+        "lemon-Tea"
+      ],
+      "category": "Breakfast",
+      "price": "#1500"
+    }
+  ],
+  "menuLunch": [
+    {
+      "id": 2,
+      "name": [
+        "Chicken Caesar Salad",
+        "Club Sandwich",
+        "Grilled Cheese Sandwich",
+        "BLT Sandwich",
+        "Margherita Pizza",
+        "Spaghetti Bolognese",
+        "Fish & Chips"
+      ],
+      "category": "Lunch",
+      "price": "#3500"
+    }
+  ],
+  "menuProteins": [
+    {
+      "id": 3,
+      "name": [
+        "Grilled Chicken Breast",
+        "Beef Steak",
+        "Tofu Steak",
+        "Pork Chops"
+      ],
+      "category": "Proteins",
+      "price": "#4500"
+    }
+  ],
+  "menuDinner": [
+    {
+      "id": 4,
+      "name": [
+        "Steak Dinner",
+        "Grilled Salmon",
+        "Pasta Alfredo",
+        "Roasted Vegetables"
+      ],
+      "category": "Dinner",
+      "price": "#6000"
+    }
+  ],
+  "menuPastries": [
+    {
+      "id": 5,
+      "name": [
+        "Croissant",
+        "Danish Pastry",
+        "Blueberry Muffin",
+        "Chocolate Chip Cookie"
+      ],
+      "category": "Pastries",
+      "price": "#800"
+    }
+  ],
+  "menuBeverages": [
+    {
+      "id": 6,
+      "name": [
+        "Fresh Coffee",
+        "Soda",
+        "Fresh Orange Juice",
+        "Iced Tea",
+        "Mineral Water"
+      ],
+      "category": "Beverages",
+      "price": "#1200"
+    }
+  ]
+}
