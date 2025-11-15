@@ -115,9 +115,9 @@ const Order = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
-        <div className="flex items-center text-amber-800">
-          <div className="relative h-[50vh] md:h-screen w-full rounded-2xl overflow-hidden shadow-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 h-screen">
+        <div className="flex items-center text-amber-800 md:col-span-1">
+          <div className="relative h-[50vh] md:h-full w-full rounded-2xl overflow-hidden shadow-lg">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60')] bg-cover bg-top md:bg-center" />
             <div className="absolute inset-0 bg-black/60 md:bg-black/70" />
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
@@ -143,30 +143,19 @@ const Order = () => {
           </div>
         </div>
 
-        <div>
-          <div className="flex justify-center py-10 border-2 rounded-lg m-4">
+        <div className="md:col-span-2 flex flex-col h-screen overflow-hidden">
+          <div className="flex justify-center py-6 border-2 rounded-lg m-4">
             <h1>Stay With Us</h1>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 m-4 gap-4">
-            <div>
-              <div className="flex items-center justify-center">
-                <h1>OUR MENU</h1>
-              </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-pink-600 text-white">
-                {menuList.menuBreakfast.map((menu) => (
-                  <button
-                    key={menu.id}
-                    onClick={() => handleMenuSelect(menu.id)}
-                    className="cursor-pointer"
-                  >
-                    {menu.category}
-                  </button>
-                ))}
-              </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-blue-600 text-white">
-                {menuList.menuLunch &&
-                  menuList.menuLunch.map((menu) => (
+          <div className="flex-1 overflow-auto m-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <div className="flex items-center justify-center">
+                  <h1>OUR MENU</h1>
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-pink-600 text-white">
+                  {menuList.menuBreakfast.map((menu) => (
                     <button
                       key={menu.id}
                       onClick={() => handleMenuSelect(menu.id)}
@@ -175,129 +164,142 @@ const Order = () => {
                       {menu.category}
                     </button>
                   ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-blue-600 text-white">
+                  {menuList.menuLunch &&
+                    menuList.menuLunch.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-green-600 text-white">
+                  {menuList.menuProteins &&
+                    menuList.menuProteins.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-yellow-600 text-white">
+                  {menuList.menuDinner &&
+                    menuList.menuDinner.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-purple-600 text-white">
+                  {menuList.menuPastries &&
+                    menuList.menuPastries.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-red-600 text-white">
+                  {menuList.menuBeverages &&
+                    menuList.menuBeverages.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
               </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-green-600 text-white">
-                {menuList.menuProteins &&
-                  menuList.menuProteins.map((menu) => (
-                    <button
-                      key={menu.id}
-                      onClick={() => handleMenuSelect(menu.id)}
-                      className="cursor-pointer"
-                    >
-                      {menu.category}
-                    </button>
-                  ))}
-              </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-yellow-600 text-white">
-                {menuList.menuDinner &&
-                  menuList.menuDinner.map((menu) => (
-                    <button
-                      key={menu.id}
-                      onClick={() => handleMenuSelect(menu.id)}
-                      className="cursor-pointer"
-                    >
-                      {menu.category}
-                    </button>
-                  ))}
-              </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-purple-600 text-white">
-                {menuList.menuPastries &&
-                  menuList.menuPastries.map((menu) => (
-                    <button
-                      key={menu.id}
-                      onClick={() => handleMenuSelect(menu.id)}
-                      className="cursor-pointer"
-                    >
-                      {menu.category}
-                    </button>
-                  ))}
-              </div>
-              <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-red-600 text-white">
-                {menuList.menuBeverages &&
-                  menuList.menuBeverages.map((menu) => (
-                    <button
-                      key={menu.id}
-                      onClick={() => handleMenuSelect(menu.id)}
-                      className="cursor-pointer"
-                    >
-                      {menu.category}
-                    </button>
-                  ))}
-              </div>
-            </div>
 
-            <div>
-              <div className="flex items-center justify-center">
-                <h1>YOUR ORDER DETAILS</h1>
-              </div>
-              <div className="mt-4 p-4 border rounded-lg h-[400px] flex flex-col">
-                <div className="flex-1 overflow-hidden">
-                  {selectedCategory ? (
-                    <div>
-                      <h2 className="font-bold text-lg mb-4">
-                        {selectedCategory.category}
-                      </h2>
-                      <div className="space-y-2 h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-                        {selectedCategory.items.map((it, index) => {
-                          const itemName = it.name;
-                          const itemPrice = it.price;
-                          return (
-                            <div
-                              key={index}
-                              className="flex justify-between items-center p-2 hover:bg-gray-100 rounded"
-                            >
-                              <span>{itemName}</span>
-                              <div className="flex items-center gap-4">
-                                <div className="flex items-center gap-2">
+              <div>
+                <div className="flex items-center justify-center">
+                  <h1>YOUR ORDER DETAILS</h1>
+                </div>
+                <div className="mt-4 p-4 border rounded-lg h-[400px] flex flex-col">
+                  <div className="flex-1 overflow-hidden">
+                    {selectedCategory ? (
+                      <div>
+                        <h2 className="font-bold text-lg mb-4">
+                          {selectedCategory.category}
+                        </h2>
+                        <div className="space-y-2 h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+                          {selectedCategory.items.map((it, index) => {
+                            const itemName = it.name;
+                            const itemPrice = it.price;
+                            return (
+                              <div
+                                key={index}
+                                className="flex justify-between items-center p-2 hover:bg-gray-100 rounded"
+                              >
+                                <span>{itemName}</span>
+                                <div className="flex items-center gap-4">
+                                  <div className="flex items-center gap-2">
+                                    <button
+                                      onClick={() => handleDecrement(itemName)}
+                                      className="px-2 py-1 bg-red-500 text-white rounded-l hover:bg-red-600 focus:outline-none"
+                                    >
+                                      -
+                                    </button>
+                                    <span className="px-4 py-1 bg-gray-100">
+                                      {itemQuantities[itemName] || 0}
+                                    </span>
+                                    <button
+                                      onClick={() => handleIncrement(itemName)}
+                                      className="px-2 py-1 bg-green-500 text-white rounded-r hover:bg-green-600 focus:outline-none"
+                                    >
+                                      +
+                                    </button>
+                                  </div>
+                                  <span>{formatCurrency(itemPrice)}</span>
                                   <button
-                                    onClick={() => handleDecrement(itemName)}
-                                    className="px-2 py-1 bg-red-500 text-white rounded-l hover:bg-red-600 focus:outline-none"
+                                    onClick={() => addToOrder(itemName)}
+                                    className={`px-3 py-1 rounded text-white transition-colors ${
+                                      itemQuantities[itemName] > 0
+                                        ? "bg-blue-500 hover:bg-blue-600"
+                                        : "bg-gray-300 cursor-not-allowed"
+                                    }`}
+                                    disabled={!itemQuantities[itemName]}
                                   >
-                                    -
-                                  </button>
-                                  <span className="px-4 py-1 bg-gray-100">
-                                    {itemQuantities[itemName] || 0}
-                                  </span>
-                                  <button
-                                    onClick={() => handleIncrement(itemName)}
-                                    className="px-2 py-1 bg-green-500 text-white rounded-r hover:bg-green-600 focus:outline-none"
-                                  >
-                                    +
+                                    Add
                                   </button>
                                 </div>
-                                <span>{formatCurrency(itemPrice)}</span>
-                                <button
-                                  onClick={() => addToOrder(itemName)}
-                                  className={`px-3 py-1 rounded text-white transition-colors ${
-                                    itemQuantities[itemName] > 0
-                                      ? "bg-blue-500 hover:bg-blue-600"
-                                      : "bg-gray-300 cursor-not-allowed"
-                                  }`}
-                                  disabled={!itemQuantities[itemName]}
-                                >
-                                  Add
-                                </button>
                               </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="text-center text-gray-500">
-                      Select a category to view menu items
-                    </div>
-                  )}
+                    ) : (
+                      <div className="text-center text-gray-500">
+                        Select a category to view menu items
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="m-4 p-4 border rounded-lg">
+          <div className="m-4 p-4 border rounded-lg bg-white md:sticky md:bottom-0 md:z-20 md:shadow-lg">
             <div className="flex items-center justify-center">
               <h2 className="text-xl font-bold">Order Summary</h2>
             </div>
-            <div className="mt-4 space-y-2 h-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+            <div className="mt-4 space-y-2 h-28 md:h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               {orderItems.length > 0 ? (
                 <>
                   {orderItems.map((item, index) => (
