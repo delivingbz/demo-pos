@@ -119,7 +119,12 @@ app.post("/api/auth/login", async (req, res) => {
 });
 
 // Database connection state middleware
+// Can be opt-out for local development by setting SKIP_DB_CHECK=true
 app.use((req, res, next) => {
+  if (process.env.SKIP_DB_CHECK === "true") {
+    // allow requests through even if the DB isn't connected (dev only)
+    return next();
+  }
   if (mongoose.connection.readyState !== 1) {
     return res.status(503).json({
       error: "Database connection is not ready",
