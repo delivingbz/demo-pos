@@ -13,6 +13,12 @@ const Order = () => {
   const [orderNumber, setOrderNumber] = useState(1);
   const [saving, setSaving] = useState(false);
 
+  const formatCurrency = (value) => {
+    const n = Number(value);
+    if (!Number.isFinite(n)) return "₦0";
+    return `₦${n.toLocaleString()}`;
+  };
+
   const backhome = () => navigate("/");
   const handleLogout = () => {
     try {
@@ -37,12 +43,19 @@ const Order = () => {
   const addToOrder = (item) => {
     const quantity = itemQuantities[item] || 0;
     if (quantity <= 0) return;
-    const price = selectedCategory.price;
+    // find the item object in the selected category to get its price
+    const itemObj = selectedCategory.items.find((i) => i.name === item);
+    if (!itemObj) return;
+    const priceNum = Number(itemObj.price);
+    if (!Number.isFinite(priceNum)) {
+      alert("Item price is invalid. Cannot add item.");
+      return;
+    }
     const newItem = {
       name: item,
       quantity,
-      price,
-      total: parseFloat(price.replace("#", "")) * quantity,
+      price: priceNum,
+      total: priceNum * quantity,
     };
 
     setOrderItems((prev) => {
@@ -225,45 +238,49 @@ const Order = () => {
                         {selectedCategory.category}
                       </h2>
                       <div className="space-y-2 h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-                        {selectedCategory.name.map((item, index) => (
-                          <div
-                            key={index}
-                            className="flex justify-between items-center p-2 hover:bg-gray-100 rounded"
-                          >
-                            <span>{item}</span>
-                            <div className="flex items-center gap-4">
-                              <div className="flex items-center gap-2">
+                        {selectedCategory.items.map((it, index) => {
+                          const itemName = it.name;
+                          const itemPrice = it.price;
+                          return (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center p-2 hover:bg-gray-100 rounded"
+                            >
+                              <span>{itemName}</span>
+                              <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    onClick={() => handleDecrement(itemName)}
+                                    className="px-2 py-1 bg-red-500 text-white rounded-l hover:bg-red-600 focus:outline-none"
+                                  >
+                                    -
+                                  </button>
+                                  <span className="px-4 py-1 bg-gray-100">
+                                    {itemQuantities[itemName] || 0}
+                                  </span>
+                                  <button
+                                    onClick={() => handleIncrement(itemName)}
+                                    className="px-2 py-1 bg-green-500 text-white rounded-r hover:bg-green-600 focus:outline-none"
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                                <span>{formatCurrency(itemPrice)}</span>
                                 <button
-                                  onClick={() => handleDecrement(item)}
-                                  className="px-2 py-1 bg-red-500 text-white rounded-l hover:bg-red-600 focus:outline-none"
+                                  onClick={() => addToOrder(itemName)}
+                                  className={`px-3 py-1 rounded text-white transition-colors ${
+                                    itemQuantities[itemName] > 0
+                                      ? "bg-blue-500 hover:bg-blue-600"
+                                      : "bg-gray-300 cursor-not-allowed"
+                                  }`}
+                                  disabled={!itemQuantities[itemName]}
                                 >
-                                  -
-                                </button>
-                                <span className="px-4 py-1 bg-gray-100">
-                                  {itemQuantities[item] || 0}
-                                </span>
-                                <button
-                                  onClick={() => handleIncrement(item)}
-                                  className="px-2 py-1 bg-green-500 text-white rounded-r hover:bg-green-600 focus:outline-none"
-                                >
-                                  +
+                                  Add
                                 </button>
                               </div>
-                              <span>{selectedCategory.price}</span>
-                              <button
-                                onClick={() => addToOrder(item)}
-                                className={`px-3 py-1 rounded text-white transition-colors ${
-                                  itemQuantities[item] > 0
-                                    ? "bg-blue-500 hover:bg-blue-600"
-                                    : "bg-gray-300 cursor-not-allowed"
-                                }`}
-                                disabled={!itemQuantities[item]}
-                              >
-                                Add
-                              </button>
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   ) : (
@@ -290,7 +307,9 @@ const Order = () => {
                     >
                       <span className="flex-1">{item.name}</span>
                       <span className="px-2">x{item.quantity}</span>
-                      <span className="w-24 text-right">{item.price}</span>
+                      <span className="w-24 text-right">
+                        {formatCurrency(item.price)}
+                      </span>
                       <button
                         onClick={() => handleRemoveItem(item.name)}
                         className="ml-4 p-1 text-red-500 hover:text-red-700 focus:outline-none"
@@ -314,7 +333,9 @@ const Order = () => {
                   <div className="flex justify-between items-center pt-4 font-bold">
                     <span>Total:</span>
                     <span>
-                      #{orderItems.reduce((sum, item) => sum + item.total, 0)}
+                      {formatCurrency(
+                        orderItems.reduce((sum, item) => sum + item.total, 0)
+                      )}
                     </span>
                   </div>
                 </>
@@ -366,7 +387,9 @@ const Order = () => {
                       <tr key={index} className="border-b">
                         <td className="py-2">{item.name}</td>
                         <td>{item.quantity}</td>
-                        <td className="text-right">{item.price}</td>
+                        <td className="text-right">
+                          {formatCurrency(item.price)}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -376,7 +399,9 @@ const Order = () => {
                 <div className="flex justify-between font-bold">
                   <span>Total</span>
                   <span>
-                    #{orderItems.reduce((sum, item) => sum + item.total, 0)}
+                    {formatCurrency(
+                      orderItems.reduce((sum, item) => sum + item.total, 0)
+                    )}
                   </span>
                 </div>
               </div>
@@ -430,7 +455,9 @@ const Order = () => {
                             <tr key={index} className="border-b">
                               <td className="py-2">{item.name}</td>
                               <td>{item.quantity}</td>
-                              <td className="text-right">{item.price}</td>
+                              <td className="text-right">
+                                {formatCurrency(item.price)}
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -440,10 +467,11 @@ const Order = () => {
                       <div className="flex justify-between font-bold">
                         <span>Total</span>
                         <span>
-                          #
-                          {orderItems.reduce(
-                            (sum, item) => sum + item.total,
-                            0
+                          {formatCurrency(
+                            orderItems.reduce(
+                              (sum, item) => sum + item.total,
+                              0
+                            )
                           )}
                         </span>
                       </div>
