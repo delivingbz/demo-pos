@@ -52,7 +52,7 @@ app.get("/api/status", (req, res) => {
   res.json(status);
 });
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("./models/User");
 
@@ -71,7 +71,8 @@ app.post("/api/auth/signup", async (req, res) => {
       return res.status(409).json({ message: "User already exists" });
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    // bcryptjs does not return a Promise; use the synchronous API here for simplicity
+    const hashed = bcrypt.hashSync(password, 10);
     const user = new User({ email, password: hashed });
     await user.save();
 
@@ -101,7 +102,7 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = bcrypt.compareSync(password, user.password);
     if (!match) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
