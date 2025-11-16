@@ -20,7 +20,8 @@ const mongooseOptions = {
 // Database connection with retry logic
 const connectWithRetry = () => {
   const mongoUri =
-    process.env.MONGODB_URI || "mongodb://localhost:27017/pos_db";
+    process.env.MONGODB_URI ||
+    "mongodb://https://demo-pos-zatp.onrender.com/pos_db";
   console.log("Environment variables loaded:", {
     MONGODB_URI: mongoUri,
     PORT: process.env.PORT,

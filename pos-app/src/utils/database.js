@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // Use Vite env variable when deployed; fall back to localhost for development.
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE =
+  import.meta.env.VITE_API_URL || "https://demo-pos-zatp.onrender.com";
 
 const checkDatabaseConnection = async () => {
   try {
