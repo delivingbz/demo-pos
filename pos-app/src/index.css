@@ -68,3 +68,60 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+/* Print styles for receipts */
+@media print {
+  /* hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* make the receipt areas visible and full width */
+  #receipt,
+  #receipt-print {
+    visibility: visible !important;
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* ensure print-only blocks are shown */
+  .print\:block,
+  .print-block {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* hide elements explicitly intended only for screen */
+  .print\:hidden,
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* remove fixed/sticky positioning that can interfere with print layout */
+  .fixed,
+  .sticky,
+  .absolute {
+    position: static !important;
+  }
+
+  /* ensure page breaks between multiple copies */
+  .receipt-copy {
+    page-break-after: always;
+    -webkit-page-break-after: always;
+  }
+
+  /* ensure tables expand fully */
+  table {
+    width: 100% !important;
+    border-collapse: collapse;
+  }
+}

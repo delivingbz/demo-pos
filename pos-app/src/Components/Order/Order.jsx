@@ -11,6 +11,7 @@ const Order = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [showReceipt, setShowReceipt] = useState(false);
   const [orderNumber, setOrderNumber] = useState(1);
+  const [paymentMethod, setPaymentMethod] = useState("Cash");
   const [saving, setSaving] = useState(false);
 
   const formatCurrency = (value) => {
@@ -96,7 +97,13 @@ const Order = () => {
   const handleConfirmOrder = async () => {
     if (orderItems.length === 0) return;
     const total = orderItems.reduce((s, it) => s + it.total, 0);
-    const receipt = { orderNumber, date: new Date(), items: orderItems, total };
+    const receipt = {
+      orderNumber,
+      date: new Date(),
+      items: orderItems,
+      total,
+      payment: paymentMethod,
+    };
 
     try {
       setSaving(true);
@@ -299,7 +306,7 @@ const Order = () => {
             <div className="flex items-center justify-center">
               <h2 className="text-xl font-bold">Order Summary</h2>
             </div>
-            <div className="mt-4 space-y-2 h-28 md:h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+            <div className="mt-4 space-y-2 h-20 md:h-36 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               {orderItems.length > 0 ? (
                 <>
                   {orderItems.map((item, index) => (
@@ -345,18 +352,44 @@ const Order = () => {
                 <p className="text-center text-gray-500">No items in order</p>
               )}
             </div>
-            <div>
-              <button
-                onClick={handleConfirmOrder}
-                disabled={saving}
-                className={`mt-4 w-full px-4 py-2 text-white font-bold rounded ${
-                  saving
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-green-500 hover:bg-green-600"
-                }`}
-              >
-                {saving ? "Saving..." : "Confirm Order"}
-              </button>
+            {/* Payment selector */}
+            <div className="mt-4">
+              <div className="text-sm font-semibold mb-2">Payment Method</div>
+              <div className="flex gap-2">
+                {[
+                  { key: "Cash", label: "Cash" },
+                  { key: "Transfer", label: "Transfer" },
+                  { key: "POS", label: "POS" },
+                ].map((pm) => (
+                  <button
+                    key={pm.key}
+                    type="button"
+                    onClick={() => setPaymentMethod(pm.key)}
+                    aria-pressed={paymentMethod === pm.key}
+                    className={`px-3 py-1 rounded-md border font-medium focus:outline-none ${
+                      paymentMethod === pm.key
+                        ? "bg-indigo-600 text-white border-indigo-700"
+                        : "bg-white text-gray-700 border-gray-300"
+                    }`}
+                  >
+                    {pm.label}
+                  </button>
+                ))}
+              </div>
+
+              <div>
+                <button
+                  onClick={handleConfirmOrder}
+                  disabled={saving}
+                  className={`mt-4 w-full px-4 py-2 text-white font-bold rounded ${
+                    saving
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-green-500 hover:bg-green-600"
+                  }`}
+                >
+                  {saving ? "Saving..." : "Confirm Order"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -373,6 +406,9 @@ const Order = () => {
                 <p className="text-sm text-gray-600">Receipt #{orderNumber}</p>
                 <p className="text-sm text-gray-600">
                   {formatDate(new Date())}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Payment: {paymentMethod}
                 </p>
               </div>
               <div className="border-t border-b py-4 my-4">
@@ -441,6 +477,9 @@ const Order = () => {
                       </p>
                       <p className="text-sm text-gray-600">
                         {formatDate(new Date())}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Payment: {paymentMethod}
                       </p>
                     </div>
                     <div className="border-t border-b py-4 my-4">
