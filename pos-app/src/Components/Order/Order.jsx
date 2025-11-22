@@ -118,7 +118,56 @@ const Order = () => {
     }
   };
 
-  const handlePrintReceipt = () => window.print();
+  const handlePrintReceipt = () => {
+    try {
+      // Prefer the print-specific block if present, otherwise use the on-screen receipt
+      const printBlock = document.getElementById("receipt-print");
+      const receiptBlock = document.getElementById("receipt");
+      const content =
+        (printBlock && printBlock.innerHTML) ||
+        (receiptBlock && receiptBlock.innerHTML) ||
+        "";
+
+      const win = window.open(
+        "",
+        "_blank",
+        "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600"
+      );
+      if (!win) {
+        alert("Please allow popups for this site to enable printing.");
+        return;
+      }
+
+      const style = `
+        <style>
+          body{ font-family: Arial, Helvetica, sans-serif; color:#000; padding:16px; }
+          table{ width:100%; border-collapse:collapse; }
+          th, td{ padding:6px 8px; border-bottom:1px solid #ddd; text-align:left }
+          .text-right{ text-align:right }
+        </style>
+      `;
+
+      win.document.open();
+      win.document.write(
+        `<!doctype html><html><head><title>Receipt</title>${style}</head><body>${content}</body></html>`
+      );
+      win.document.close();
+      // Give the new window a moment to render before printing
+      win.focus();
+      setTimeout(() => {
+        try {
+          win.print();
+        } catch (e) {
+          console.error("Print failed", e);
+        }
+        // Optionally close the window after printing
+        // win.close();
+      }, 250);
+    } catch (err) {
+      console.error("Error preparing print:", err);
+      window.print();
+    }
+  };
 
   return (
     <div>
@@ -306,7 +355,7 @@ const Order = () => {
             <div className="flex items-center justify-center">
               <h2 className="text-xl font-bold">Order Summary</h2>
             </div>
-            <div className="mt-4 space-y-2 h-20 md:h-36 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+            <div className="mt-4 space-y-2 h-16 md:h-28 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               {orderItems.length > 0 ? (
                 <>
                   {orderItems.map((item, index) => (
