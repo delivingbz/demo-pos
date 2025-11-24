@@ -1,8 +1,8 @@
 {
-  "menuBreakfast": [
+  "menuCoffe": [
     {
-      "id": 1,
-      "category": "Breakfast",
+      "id": 10,
+      "category": "COFFE",
       "items": [
         { "name": "Latte", "price": 1500 },
         { "name": "Cappuccino", "price": 1600 },
@@ -14,67 +14,154 @@
       ]
     }
   ],
-  "menuLunch": [
+
+  "menuRice": [
     {
       "id": 2,
-      "category": "Lunch",
+      "category": "RICE",
       "items": [
-        { "name": "Chicken Caesar Salad", "price": 3500 },
-        { "name": "Club Sandwich", "price": 3200 },
-        { "name": "Grilled Cheese Sandwich", "price": 2800 },
-        { "name": "BLT Sandwich", "price": 3000 },
-        { "name": "Margherita Pizza", "price": 4000 },
-        { "name": "Spaghetti Bolognese", "price": 3800 },
-        { "name": "Fish & Chips", "price": 4200 }
+        { "name": " White Rice and stew ", "price": 1300 },
+        { "name": " Jellof Rice ", "price": 1300 },
+        { "name": " Fried Rice ", "price": 1300 },
+        { "name": " Coconut Rice", "price": 1300 },
+        { "name": " Native Rice", "price": 1300 },
+        { "name": " Half Fried Rice", "price": 650 },
+        { "name": " Half Jellof Rice", "price": 650 },
+        { "name": " Ofada Rice and Sauce", "price": 1.0 },
+        { "name": " Sphagetti ", "price": 800 }
+      ]
+    }
+  ],
+
+  "menuSideAttraction": [
+    {
+      "id": 3,
+      "category": "SIDE ATTRACTION",
+      "items": [
+        { "name": " Salad ", "price": 500 },
+        { "name": " cooked egg  ", "price": 300 },
+        { "name": " Fried egg ", "price": 300 },
+        { "name": " Fried Plantain ", "price": 200 },
+        { "name": " Moi Moi ", "price": 300 }
+      ]
+    }
+  ],
+
+  "menuSwallow": [
+    {
+      "id": 4,
+      "category": "SWALLOW",
+      "items": [
+        { "name": " Fufu ", "price": 500 },
+        { "name": " Garri  ", "price": 500 },
+        { "name": " Pounded yam  ", "price": 1.0 },
+        { "name": " Amala ", "price": 1.0 },
+        { "name": " Starch ", "price": 1.0 }
+      ]
+    }
+  ],
+
+  "menuSoup": [
+    {
+      "id": 5,
+      "category": "SOUP",
+      "items": [
+        { "name": " Egusi soup ", "price": 800 },
+        { "name": " vegetable Soup ", "price": 800 },
+        { "name": " Okoro Soup ", "price": 800 },
+        { "name": " Oha Soup ", "price": 800 },
+        { "name": " Nsala Soup ", "price": 1.0 },
+        { "name": " Bitterleaf Soup  ", "price": 800 },
+        { "name": " Banga soup  ", "price": 1.0 },
+        { "name": " Ewedu ", "price": 1.0 },
+        { "name": " Fisherman soup ", "price": 1.0 },
+        { "name": " Ogbono ", "price": 1.0 },
+        { "name": " Soup ", "price": 400 }
+      ]
+    }
+  ],
+
+  "menuSharwama": [
+    {
+      "id": 7,
+      "category": "SHARWAMA",
+      "items": [
+        { "name": " Beef ", "price": 2500 },
+        { "name": " Beef and Hotdog ", "price": 2800 },
+        { "name": " Chicken ", "price": 3000 },
+        { "name": " Chicken and Hotdog", "price": 3300 },
+        { "name": " Special Combo", "price": 1.0 }
       ]
     }
   ],
   "menuProteins": [
     {
-      "id": 3,
-      "category": "Proteins",
+      "id": 1,
+      "category": "PROTEINS",
       "items": [
-        { "name": "Grilled Chicken Breast", "price": 4500 },
-        { "name": "Beef Steak", "price": 6500 },
-        { "name": "Tofu Steak", "price": 3500 },
-        { "name": "Pork Chops", "price": 4800 }
+        { "name": " Beef ", "price": 200 },
+        { "name": " kpomo ", "price": 200 },
+        { "name": " Chicken Small ", "price": 500 },
+        { "name": " Chicken medium", "price": 1000 },
+        { "name": " Chicken Big (a) ", "price": 1200 },
+        { "name": " Chicken Big (b) ", "price": 1500 },
+        { "name": " Chicken Biggest ", "price": 1.0 },
+        { "name": " Fried Fish ", "price": 500 },
+        { "name": " Snail ", "price": 1.0 },
+        { "name": " Goat meat ", "price": 1.0 },
+        { "name": " Cat Fish ", "price": 1.0 },
+        { "name": " Stock Fish ", "price": 1.0 }
       ]
     }
   ],
-  "menuDinner": [
+  "menuSandwich": [
     {
-      "id": 4,
-      "category": "Dinner",
+      "id": 6,
+      "category": "SANDWICH",
       "items": [
-        { "name": "Steak Dinner", "price": 7500 },
-        { "name": "Grilled Salmon", "price": 7200 },
-        { "name": "Pasta Alfredo", "price": 4200 },
-        { "name": "Roasted Vegetables", "price": 3000 }
+        { "name": " Normal ", "price": 1200 },
+        { "name": " Creamy Sandwich ", "price": 1500 },
+        { "name": " Sandwich Beef  ", "price": 500 },
+        { "name": " Sandwich chicken ", "price": 1000 },
+        { "name": " Extra Egg ", "price": 300 }
       ]
     }
   ],
   "menuPastries": [
     {
-      "id": 5,
-      "category": "Pastries",
+      "id": 8,
+      "category": "PASRTIES",
       "items": [
-        { "name": "Croissant", "price": 800 },
-        { "name": "Danish Pastry", "price": 900 },
-        { "name": "Blueberry Muffin", "price": 700 },
-        { "name": "Chocolate Chip Cookie", "price": 600 }
+        { "name": " Meat pie", "price": 500 },
+        { "name": " Chicken pie ", "price": 700 },
+        { "name": " Egg Roll ", "price": 600 },
+        { "name": " Burger ", "price": 1500 },
+        { "name": " Hotdog Roll ", "price": 500 },
+        { "name": " Small Chops ", "price": 600 },
+        { "name": " Super Roll ", "price": 700 }
       ]
     }
   ],
   "menuBeverages": [
     {
-      "id": 6,
-      "category": "Beverages",
+      "id": 9,
+      "category": "BEVERAGES",
       "items": [
-        { "name": "Fresh Coffee", "price": 1200 },
-        { "name": "Soda", "price": 700 },
-        { "name": "Fresh Orange Juice", "price": 1400 },
-        { "name": "Iced Tea", "price": 900 },
-        { "name": "Mineral Water", "price": 500 }
+        { "name": " Mineral ", "price": 500 },
+        { "name": " Nutri Milk", "price": 650 },
+        { "name": " Nutri yo  ", "price": 700 },
+        { "name": " Ntri Choco ", "price": 900 },
+        { "name": " Water ", "price": 250 },
+        { "name": " Hollandia 315ml ", "price": 900 },
+        { "name": " Hollandia 500ml", "price": 1200 },
+        { "name": " Hollandia 1l ", "price": 2000 },
+        { "name": " Chi Exotic 315ml", "price": 900 },
+        { "name": " Chi Exotic 500ml", "price": 1200 },
+        { "name": " Chi Exotic 1l ", "price": 1800 },
+        { "name": " Viju Milk", "price": 800 },
+        { "name": " viju Wheat  ", "price": 1200 },
+        { "name": " Viju Smartic ", "price": 1800 },
+        { "name": " Vita Milk ", "price": 2000 }
       ]
     }
   ]
