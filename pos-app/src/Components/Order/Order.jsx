@@ -428,7 +428,7 @@ const Order = () => {
             <div className="flex items-center justify-center">
               <h2 className="text-xl font-bold">Order Summary</h2>
             </div>
-            <div className="mt-4 space-y-2 h-16 md:h-28 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+            <div className="mt-4 space-y-2 h-12 md:h-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               {orderItems.length > 0 ? (
                 <>
                   {orderItems.map((item, index) => (
