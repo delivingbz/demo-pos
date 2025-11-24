@@ -114,6 +114,44 @@
       ]
     }
   ],
+  "menuBreakfast": [
+    {
+      "id": 11,
+      "category": "BREAKFAST",
+      "items": [
+        { "name": "Akara and Bread", "price": 800 },
+        { "name": "Bread and Egg", "price": 700 },
+        { "name": "Tea", "price": 300 },
+        { "name": "Coffee", "price": 500 },
+        { "name": "Pancakes", "price": 900 }
+      ]
+    }
+  ],
+  "menuLunch": [
+    {
+      "id": 12,
+      "category": "LUNCH",
+      "items": [
+        { "name": "Jollof Rice", "price": 1300 },
+        { "name": "Fried Rice", "price": 1300 },
+        { "name": "White Rice & Stew", "price": 1300 },
+        { "name": "Chicken (medium)", "price": 1000 },
+        { "name": "Beef Stew", "price": 1200 }
+      ]
+    }
+  ],
+  "menuDinner": [
+    {
+      "id": 13,
+      "category": "DINNER",
+      "items": [
+        { "name": "Ofada Rice & Sauce", "price": 1500 },
+        { "name": "Starch & Soup", "price": 1400 },
+        { "name": "Egusi & Fufu", "price": 1200 },
+        { "name": "Banga & Starch", "price": 1500 }
+      ]
+    }
+  ],
   "menuSandwich": [
     {
       "id": 6,
