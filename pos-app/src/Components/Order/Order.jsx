@@ -281,6 +281,79 @@ const Order = () => {
                       </button>
                     ))}
                 </div>
+
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-cyan-600 text-white">
+                  {menuList.menuRice &&
+                    menuList.menuRice.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-lime-600 text-white">
+                  {menuList.menuSideAttraction &&
+                    menuList.menuSideAttraction.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-fuchsia-600 text-white">
+                  {menuList.menuSwallow &&
+                    menuList.menuSwallow.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-amber-600 text-white">
+                  {menuList.menuSoup &&
+                    menuList.menuSoup.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-orange-600 text-white">
+                  {menuList.menuSharwama &&
+                    menuList.menuSharwama.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
+                <div className="mt-4 p-4 border rounded-lg flex justify-between font-extrabold tracking-wider cursor-pointer bg-teal-600 text-white">
+                  {menuList.menuCoffe &&
+                    menuList.menuCoffe.map((menu) => (
+                      <button
+                        key={menu.id}
+                        onClick={() => handleMenuSelect(menu.id)}
+                        className="cursor-pointer"
+                      >
+                        {menu.category}
+                      </button>
+                    ))}
+                </div>
               </div>
 
               <div>
